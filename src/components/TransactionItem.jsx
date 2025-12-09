@@ -7,7 +7,7 @@ export function TransactionItem({ tx }) {
 
   return (
     <article
-      className={`flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 ${
+      className={`animate-transaction-pop flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 ${
         isInterest
           ? "relative isolate rounded-xl bg-gradient-to-r from-fuchsia-50 via-pink-50 to-amber-50 ring-2 ring-fuchsia-200 shadow mx-[-12px] sm:mx-[-16px]"
           : ""
