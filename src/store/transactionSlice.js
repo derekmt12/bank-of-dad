@@ -135,41 +135,45 @@ const transactionSlice = createSlice({
   reducers: {
     deposit: (state, action) => {
       const amount = parseFloat(action.payload.amount || action.payload);
+      if (Number.isNaN(amount) || amount <= 0) return;
       const memo = action.payload.memo || "";
+      const date = action.payload.date || new Date().toISOString();
       state.balance += amount;
       state.transactions.push({
         id: Date.now(),
         type: "deposit",
-        amount: amount,
-        memo: memo,
-        date: new Date().toISOString(),
+        amount,
+        memo,
+        date,
         balance: state.balance,
       });
     },
     withdraw: (state, action) => {
       const amount = parseFloat(action.payload.amount || action.payload);
+      if (Number.isNaN(amount) || amount <= 0 || amount > state.balance) return;
       const memo = action.payload.memo || "";
-      if (amount <= state.balance) {
-        state.balance -= amount;
-        state.transactions.push({
-          id: Date.now(),
-          type: "withdraw",
-          amount: amount,
-          memo: memo,
-          date: new Date().toISOString(),
-          balance: state.balance,
-        });
-      }
+      const date = action.payload.date || new Date().toISOString();
+      state.balance -= amount;
+      state.transactions.push({
+        id: Date.now(),
+        type: "withdraw",
+        amount,
+        memo,
+        date,
+        balance: state.balance,
+      });
     },
-    addInterest: (state) => {
-      const interest = state.balance * state.interestRate;
+    addInterest: (state, action) => {
+      const rate = action?.payload?.rate ?? state.interestRate;
+      const interest = state.balance * rate;
+      const date = action?.payload?.date || new Date().toISOString();
       state.balance += interest;
       state.transactions.push({
         id: Date.now(),
         type: "interest",
         amount: interest,
-        memo: "Weekly interest",
-        date: new Date().toISOString(),
+        memo: action?.payload?.memo || "Interest applied",
+        date,
         balance: state.balance,
       });
     },
