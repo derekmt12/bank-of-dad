@@ -26,3 +26,42 @@ body {
 		transform: translateY(0) scale(1);
 	}
 }
+
+.interest-shimmer {
+	overflow: visible;
+}
+
+.interest-shimmer::after {
+	content: "";
+	position: absolute;
+	top: -20%;
+	bottom: -20%;
+	left: -120%;
+	width: 60%;
+	background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.72) 45%, rgba(255,255,255,0.05) 70%, transparent 100%);
+	filter: blur(1px);
+	opacity: 0;
+	transform: skewX(-12deg);
+	pointer-events: none;
+}
+
+.interest-shimmer:hover::after {
+	animation: shimmer-sweep 950ms ease-out;
+}
+
+@keyframes shimmer-sweep {
+	0% {
+		transform: translateX(0) skewX(-12deg);
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.55;
+	}
+	60% {
+		opacity: 0.25;
+	}
+	100% {
+		transform: translateX(320%) skewX(-12deg);
+		opacity: 0;
+	}
+}
