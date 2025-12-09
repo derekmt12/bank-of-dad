@@ -1,16 +1,32 @@
-# React + Vite
+# Bank of Dad
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A totally vibe-coded, kid-friendly savings tracker where a parent can log deposits, withdrawals, and interest for a child’s account. The UI is bright, playful, and highlights interest growth with animations and confetti when new $100 milestones are reached.
 
-Currently, two official plugins are available:
+## Features
+- Transaction list with deposits, withdrawals, and interest entries (hover shimmer on interest rows).
+- Inline controls for quick add: amount, memo, date, and custom interest rate.
+- Live balance and stacked principal vs. interest chart (Recharts).
+- Celebration confetti when balance crosses each $100 bucket.
+- Built with React, Redux Toolkit, Tailwind CSS v4, Vite, and Recharts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
+1. Install dependencies:
+	```bash
+	npm install
+	```
+2. Run the dev server:
+	```bash
+	npm run dev
+	```
+3. Open the printed local URL in your browser.
 
-## React Compiler
+## Scripts
+- `npm run dev` — start Vite dev server.
+- `npm run build` — production build.
+- `npm run preview` — preview the production build locally.
+- `npm run lint` — run ESLint.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes
+- Data is in-memory; refresh resets to seeded transactions in `src/store/transactionSlice.js`.
+- Tailwind classes live inline; global styles and animations in `src/index.css`.
+- Balance milestones use client time and rounding to the nearest cent; confetti triggers when crossing into a new $100 bucket.
