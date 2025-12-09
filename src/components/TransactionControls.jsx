@@ -2,7 +2,19 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addInterest, deposit, withdraw } from "../store/transactionSlice";
 
-const todayLocal = () => new Date().toISOString().slice(0, 16);
+const todayLocal = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const toIsoDate = (dateStr) => {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  const local = new Date(year, month - 1, day, 12, 0, 0); // noon local avoids timezone day shifts
+  return local.toISOString();
+};
 
 export function TransactionControls() {
   const dispatch = useDispatch();
@@ -20,7 +32,7 @@ export function TransactionControls() {
 
   const submit = (e) => {
     e.preventDefault();
-    const isoDate = new Date(date).toISOString();
+    const isoDate = toIsoDate(date);
     if (active === "deposit") {
       dispatch(deposit({ amount, memo, date: isoDate }));
     } else if (active === "withdraw") {
@@ -72,9 +84,9 @@ export function TransactionControls() {
         </div>
 
         <div className="flex flex-1 flex-col gap-1 min-w-[200px]">
-          <label className="text-xs font-semibold text-slate-600">Date & time</label>
+          <label className="text-xs font-semibold text-slate-600">Date</label>
           <input
-            type="datetime-local"
+            type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 shadow-inner focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"

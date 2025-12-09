@@ -6,12 +6,10 @@ export const formatCurrency = (value) =>
   }).format(value);
 
 export const formatDate = (value) =>
-  new Date(value).toLocaleString(undefined, {
+  new Date(value).toLocaleDateString(undefined, {
     year: "numeric",
     month: "short",
     day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
   });
 
 export const formatShortDate = (value) =>
