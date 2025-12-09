@@ -8,7 +8,7 @@ export function App() {
   const { balance, transactions } = useSelector((state) => state.transactions);
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="min-h-screen bg-gradient-to-b from-amber-50 via-sky-50 to-emerald-50 text-slate-900">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <Header balance={balance} />
 

@@ -35,7 +35,7 @@ export function TransactionControls() {
     active === "deposit" ? "Deposit" : active === "withdraw" ? "Withdraw" : "Add interest";
 
   return (
-    <section className="mb-6 rounded-xl bg-white p-3 shadow-sm ring-1 ring-slate-200 sm:p-4">
+    <section className="mb-6 rounded-2xl border-2 border-amber-200 bg-white/90 p-3 shadow-lg shadow-amber-100 sm:p-4">
       <form className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-end" onSubmit={submit}>
         <div className="flex flex-wrap gap-2">
           {[
@@ -47,10 +47,10 @@ export function TransactionControls() {
               key={btn.key}
               type="button"
               onClick={() => setActive(btn.key)}
-              className={`rounded-full px-3 py-1.5 text-sm font-semibold ring-1 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-1 ${
+              className={`rounded-full px-3 py-1.5 text-sm font-semibold ring-2 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-1 ${
                 active === btn.key
-                  ? "bg-emerald-50 text-emerald-800 ring-emerald-200"
-                  : "bg-slate-50 text-slate-700 ring-slate-200 hover:bg-slate-100"
+                  ? "bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-400 text-white ring-transparent shadow"
+                  : "bg-white text-slate-700 ring-slate-200 hover:bg-emerald-50"
               }`}
             >
               {btn.label}
@@ -109,7 +109,7 @@ export function TransactionControls() {
         <div className="flex items-end">
           <button
             type="submit"
-            className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+            className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-emerald-300"
           >
             {actionLabel}
           </button>

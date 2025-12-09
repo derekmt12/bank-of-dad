@@ -7,9 +7,9 @@ const typeLabels = {
 };
 
 const typePillClasses = {
-  deposit: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-  withdraw: "bg-amber-50 text-amber-800 ring-amber-200",
-  interest: "bg-indigo-50 text-indigo-700 ring-indigo-200",
+  deposit: "bg-lime-100 text-lime-800 ring-lime-200",
+  withdraw: "bg-orange-100 text-orange-800 ring-orange-200",
+  interest: "bg-fuchsia-100 text-fuchsia-800 ring-fuchsia-200",
 };
 
 export function TransactionItem({ tx }) {
@@ -25,8 +25,8 @@ export function TransactionItem({ tx }) {
         </span>
 
         <div className="space-y-1 min-w-[0]">
-          <p className="text-base font-semibold text-slate-900 leading-tight">{tx.memo || typeLabels[tx.type] || "—"}</p>
-          <p className="text-[11px] font-medium uppercase tracking-wide text-slate-400">
+            <p className="text-lg font-extrabold text-sky-900 leading-tight drop-shadow-sm">{tx.memo || typeLabels[tx.type] || "—"}</p>
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-sky-500">
             {formatDate(tx.date)}
           </p>
         </div>
@@ -34,14 +34,14 @@ export function TransactionItem({ tx }) {
 
       <div className="text-right sm:justify-self-end">
         <div
-          className={`text-lg font-semibold tabular-nums leading-tight ${
-            tx.type === "withdraw" ? "text-rose-700" : "text-emerald-700"
+          className={`text-xl font-extrabold tabular-nums leading-tight drop-shadow-sm ${
+            tx.type === "withdraw" ? "text-orange-600" : "text-emerald-700"
           }`}
         >
           {tx.type === "withdraw" ? "-" : "+"}
           {formatCurrency(Math.abs(tx.amount))}
         </div>
-        <div className="text-[11px] text-slate-500">Balance {formatCurrency(tx.balance)}</div>
+          <div className="text-[11px] font-semibold text-sky-500">Balance {formatCurrency(tx.balance)}</div>
       </div>
     </article>
   );
