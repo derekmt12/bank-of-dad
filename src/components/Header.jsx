@@ -1,6 +1,6 @@
 import { formatCurrency } from "../utils/formatters";
 
-function Header({ balance }) {
+export function Header({ balance }) {
   return (
     <header className="mb-8 flex items-center justify-between">
       <div>
@@ -16,4 +16,3 @@ function Header({ balance }) {
   );
 }
 
-export default Header;

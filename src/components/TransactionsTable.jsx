@@ -1,6 +1,6 @@
-import TransactionItem from "./TransactionItem";
+import { TransactionItem } from "./TransactionItem";
 
-function TransactionsTable({ transactions }) {
+export function TransactionsTable({ transactions }) {
   const sorted = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
@@ -25,4 +25,3 @@ function TransactionsTable({ transactions }) {
   );
 }
 
-export default TransactionsTable;

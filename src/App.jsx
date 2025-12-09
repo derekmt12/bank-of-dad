@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import BalanceChart from "./components/BalanceChart";
-import Header from "./components/Header";
-import TransactionsTable from "./components/TransactionsTable";
+import { BalanceChart } from "./components/BalanceChart";
+import { Header } from "./components/Header";
+import { TransactionsTable } from "./components/TransactionsTable";
 
-function App() {
+export function App() {
   const { balance, transactions } = useSelector((state) => state.transactions);
 
   return (
@@ -20,4 +20,3 @@ function App() {
   );
 }
 
-export default App;

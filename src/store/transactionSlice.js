@@ -177,4 +177,4 @@ const transactionSlice = createSlice({
 });
 
 export const { deposit, withdraw, addInterest } = transactionSlice.actions;
-export default transactionSlice.reducer;
+export const transactionReducer = transactionSlice.reducer;

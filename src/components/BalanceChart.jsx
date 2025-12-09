@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { formatCurrency, formatDate, formatShortDate } from "../utils/formatters";
 
-function BalanceChart({ transactions }) {
+export function BalanceChart({ transactions }) {
   const chartData = useMemo(() => {
     return [...transactions]
       .sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -73,4 +73,3 @@ function BalanceChart({ transactions }) {
   );
 }
 
-export default BalanceChart;

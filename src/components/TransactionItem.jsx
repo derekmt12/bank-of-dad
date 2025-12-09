@@ -12,7 +12,7 @@ const typePillClasses = {
   interest: "bg-indigo-50 text-indigo-700 ring-indigo-200",
 };
 
-function TransactionItem({ tx }) {
+export function TransactionItem({ tx }) {
   return (
     <article className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6">
       <div className="flex items-start gap-3 sm:items-center">
@@ -47,4 +47,3 @@ function TransactionItem({ tx }) {
   );
 }
 
-export default TransactionItem;
