@@ -22,7 +22,7 @@ function BalanceChart({ transactions }) {
   }, [transactions]);
 
   return (
-    <section className="rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-6">
+    <section className="self-start rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200 sm:p-6">
       <div className="mb-3">
         <h2 className="text-lg font-semibold text-slate-900">Balance over time</h2>
         <p className="text-sm text-slate-500">Ledger balance after each entry.</p>
@@ -32,7 +32,7 @@ function BalanceChart({ transactions }) {
           Add transactions to see the chart.
         </div>
       ) : (
-        <div className="h-72">
+        <div className="h-64 sm:h-72">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={chartData} margin={{ left: 0, right: 0, top: 10, bottom: 0 }}>
               <defs>
